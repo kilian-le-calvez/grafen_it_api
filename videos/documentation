@@ -1,0 +1,32 @@
+routes = [
+    {
+        'Endpoint': '/videos/',
+        'Method': 'GET',
+        'body': None,
+        'description': 'Returns an array of videos',
+    },
+    {
+        'Endpoint': '/videos/id',
+        'Method': 'GET',
+        'body': None,
+        'description': 'Returns a single video object',
+    },
+    {
+        'Endpoint': '/videos/create',
+        'Method': 'POST',
+        'body': {'title': ""},
+        'description': 'Creates a new video with data sent in Post request',
+    },
+    {
+        'Endpoint': '/videos/id/update',
+        'Method': 'PUT',
+        'body': {'title': ""},
+        'description': 'Update an existing video',
+    },
+    {
+        'Endpoint': '/videos/id/delete',
+        'Method': 'DELETE',
+        'body': None,
+        'description': 'Deletes an existing video',
+    },
+]
