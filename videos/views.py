@@ -21,7 +21,7 @@ def getRoutes(request):
     {
         'Endpoint': '/videos/create',
         'Method': 'POST',
-        'body': {'title': "", 'videofile': {}},
+        'body': {'title': ""},
         'description': 'Creates a new video with data sent in Post request',
     },
     {
