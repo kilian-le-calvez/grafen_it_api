@@ -52,9 +52,9 @@ def getVideo(request, pk):
     return Response(serializer.data)
 
 @api_view(['POST'])
-def createVideo(request):
+def createVideo(request, video):
     data = request.data
-    video = Video.objects.create(title=data["title"])
+    video = Video.objects.create(title=data["title"], videofile=data["videofile"])
     serializer = VideoSerializer(video, many=False)
     return Response(serializer.data)
 
