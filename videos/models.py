@@ -7,7 +7,7 @@ class Video(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title[0:50] + str(self.videofile)[0:50]
+        return "Title: " + self.title[0:50] + "  /  Videofile: " + str(self.videofile)[0:50]
     
     class Meta:
         ordering = ['-updated']

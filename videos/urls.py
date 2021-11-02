@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .. backend import settings
+from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
@@ -12,4 +12,4 @@ urlpatterns = [
     path('videos/<str:pk>/', views.getVideo),
 ] 
 
-urlpatterns += static(settings.MEDIA_VIDEO_URL, document_root= settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
