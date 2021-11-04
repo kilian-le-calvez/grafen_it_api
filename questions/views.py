@@ -7,6 +7,8 @@ from .models import Question
 @api_view(['GET'])
 def getQuestions(request, video_id):
     questions = Question.objects.filter(video_id=video_id)
+    if questions == []:
+        return Response({})
     serializer = QuestionSerializer(questions, many=True)
     return Response(serializer.data)
 
