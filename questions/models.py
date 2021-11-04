@@ -2,12 +2,16 @@ from django.db import models
 from django.utils import timezone
 
 import datetime
+import sys
 
 from videos.views import updateVideo
+sys.path.append("..")
+from videos.models import Video
 
 class Question(models.Model):
-    author = models.CharField(max_length=1000)
-    question = models.CharField(max_length=1000)
+    video = models.ForeignKey(Video, on_delete=models.CASCADE)
+    author = models.TextField()
+    question = models.TextField()
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     

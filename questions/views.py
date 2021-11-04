@@ -1,7 +1,11 @@
+import sys
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import QuestionSerializer
 from .models import Question
+
+sys.path.append("..")
+from videos.models import Video
 
 @api_view(['GET'])
 def getQuestions(request, id_video):
@@ -12,7 +16,7 @@ def getQuestions(request, id_video):
 @api_view(['POST'])
 def createQuestion(request, id_video):
     data = request.data
-    question = Question.objects.create(question=data['question'], author=data['author'])
+    question = Question.objects.create(question=data['question'], author=data['author'], video=Video.objects.get(pk=id_video))
     serializer = QuestionSerializer(question, many=False)
     return Response(serializer.data)
 
