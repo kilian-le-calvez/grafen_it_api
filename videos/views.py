@@ -9,7 +9,11 @@ def getRoutes(request):
     {
         'VIDEO_OBJECT': 'Represent a video',
         'format' : {
-            
+            'id': 'integer',
+            'title': 'string',
+            'videofile': 'string (path to video)',
+            'updated': 'date time',
+            'created': 'date time'
         }
     },
     {
@@ -21,20 +25,23 @@ def getRoutes(request):
     {
         'Endpoint': '/videos/create',
         'Method': 'POST',
-        'body': {'title': ""},
+        'body': {
+            'title': 'string (title of video)',
+            'videofile': 'string (path to video)'
+            },
         'description': 'Creates a new video with data sent in Post request',
     },
     {
         'Endpoint': '/videos/id/update',
         'Method': 'PUT',
-        'body': {'title': ""},
+        'body': {'title': ''},
         'description': 'Update an existing video',
     },
     {
         'Endpoint': '/videos/id/delete',
         'Method': 'DELETE',
         'body': None,
-        'description': 'Deletes an existing video',
+        'description': 'Deletes an existing video by id in url, where id = integer (retrieved in the VIDEO_OBJECT)',
     },
 ]
     return Response(routes)
@@ -48,7 +55,7 @@ def getVideos(request):
 @api_view(['POST'])
 def createVideo(request):
     data = request.data
-    video = Video.objects.create(title=data["title"], videofile=data["videofile"])
+    video = Video.objects.create(title=data['title'], videofile=data['videofile'])
     serializer = VideoSerializer(video, many=False)
     return Response(serializer.data)
 
