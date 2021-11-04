@@ -7,16 +7,16 @@ from .models import Video
 def getRoutes(request):
     routes = [
     {
-        'Endpoint': '/videos/',
-        'Method': 'GET',
-        'body': None,
-        'description': 'Returns an array of videos',
+        'VIDEO_OBJECT': 'Represent a video',
+        'format' : {
+            
+        }
     },
     {
-        'Endpoint': '/videos/id',
+        'Endpoint': '/videos',
         'Method': 'GET',
         'body': None,
-        'description': 'Returns a single video object',
+        'description': 'Returns an array of [VIDEO_OBJECT]',
     },
     {
         'Endpoint': '/videos/create',
@@ -43,12 +43,6 @@ def getRoutes(request):
 def getVideos(request):
     videos = Video.objects.all()
     serializer = VideoSerializer(videos, many=True)
-    return Response(serializer.data)
-
-@api_view(['GET'])
-def getVideo(request, pk):
-    video = Video.objects.get(id=pk)
-    serializer = VideoSerializer(video, many=False)
     return Response(serializer.data)
 
 @api_view(['POST'])
