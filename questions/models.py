@@ -12,7 +12,7 @@ class Question(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.question_text
+        return "Author: " + self.author + " / Question : " + self.question
 
     class Meta:
         ordering = ['-updated']
