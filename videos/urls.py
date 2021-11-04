@@ -4,7 +4,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.getRoutes),
     path('videos/', views.getVideos),
     path('videos/create/', views.createVideo),
     path('videos/<str:pk>/update/', views.updateVideo),

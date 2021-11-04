@@ -4,49 +4,6 @@ from .serializers import VideoSerializer
 from .models import Video
 
 @api_view(['GET'])
-def getRoutes(request):
-    routes = [
-    {
-        'VIDEO_OBJECT': 'Represent a video',
-        'format' : {
-            'id': 'integer',
-            'title': 'string',
-            'videofile': 'string (path to video)',
-            'updated': 'date time',
-            'created': 'date time'
-        }
-    },
-    {
-        'Endpoint': '/videos',
-        'Method': 'GET',
-        'body': None,
-        'description': 'Returns an array of [VIDEO_OBJECT]',
-    },
-    {
-        'Endpoint': '/videos/create',
-        'Method': 'POST',
-        'body': {
-            'title': 'string (title of video)',
-            'videofile': 'string (path to video)'
-            },
-        'description': 'Creates a new video with data sent in Post request',
-    },
-    {
-        'Endpoint': '/videos/id/update',
-        'Method': 'PUT',
-        'body': {'title': ''},
-        'description': 'Update an existing video',
-    },
-    {
-        'Endpoint': '/videos/id/delete',
-        'Method': 'DELETE',
-        'body': None,
-        'description': 'Deletes an existing video by id in url, where id = integer (retrieved in the VIDEO_OBJECT)',
-    },
-]
-    return Response(routes)
-
-@api_view(['GET'])
 def getVideos(request):
     videos = Video.objects.all()
     serializer = VideoSerializer(videos, many=True)
@@ -72,4 +29,4 @@ def updateVideo(request, pk):
 def deleteVideo(request, pk):
     video = Video.objects.get(id=pk)
     video.delete()
-    return Response('Note was deleted')
+    return Response('Video was deleted')

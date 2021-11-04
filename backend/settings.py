@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     
     # My apps
     'videos.apps.VideosConfig',
+    'questions.apps.QuestionsConfig',
 ]
 
 MIDDLEWARE = [

@@ -11,3 +11,4 @@ class Video(models.Model):
     
     class Meta:
         ordering = ['-updated']
+
