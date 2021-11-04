@@ -1,7 +1,7 @@
 from django.db import models
 
 class Question(models.Model):
-    video_id = models.IntegerField()
+    video_id = models.IntegerField(default=0)
     author = models.TextField()
     question = models.TextField()
     updated = models.DateTimeField(auto_now=True)
