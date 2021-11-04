@@ -1,7 +1,10 @@
+import sys
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import VideoSerializer
 from .models import Video
+sys.path.append("..")
+from questions.models import Question
 
 @api_view(['GET'])
 def getVideos(request):
@@ -27,6 +30,8 @@ def updateVideo(request, pk):
 
 @api_view(['DELETE'])
 def deleteVideo(request, pk):
+    questions = Question.objects.get(video_id=pk)
+    questions.delete()
     video = Video.objects.get(id=pk)
     video.delete()
     return Response('Video was deleted')

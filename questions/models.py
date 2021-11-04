@@ -1,15 +1,7 @@
 from django.db import models
-from django.utils import timezone
-
-import datetime
-import sys
-
-from videos.views import updateVideo
-sys.path.append("..")
-from videos.models import Video
 
 class Question(models.Model):
-    video = models.ForeignKey(Video, on_delete=models.CASCADE)
+    video_id = models.IntegerField(default=0)
     author = models.TextField()
     question = models.TextField()
     updated = models.DateTimeField(auto_now=True)
