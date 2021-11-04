@@ -9,7 +9,8 @@ from videos.models import Video
 
 @api_view(['GET'])
 def getQuestions(request, id_video):
-    questions = Question.objects.all()
+    video = Video.objects.get(pk=id_video)
+    questions = Question.objects.get(video=video)
     serializer = QuestionSerializer(questions, many=True)
     return Response(serializer.data)
 
