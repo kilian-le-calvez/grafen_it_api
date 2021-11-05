@@ -23,7 +23,7 @@ def createQuestion(request):
         serializer = QuestionSerializer(question, many=False)
         return Response(serializer.data)
     else:
-        return Response({'status': 'One of the fields is missing or corrupted'})
+        return Response({})
 
 @api_view(['POST'])
 def deleteQuestion(request):
