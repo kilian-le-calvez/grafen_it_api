@@ -21,7 +21,7 @@ def createVideo(request):
         serializer = VideoSerializer(video, many=False)
         return Response(serializer.data)
     else:
-        return Response("One of the fields is missing or corrupted")
+        return Response({'status':'One of the fields is missing or corrupted'})
 
 @api_view(['DELETE'])
 def deleteVideo(request):
@@ -31,6 +31,6 @@ def deleteVideo(request):
         questions.delete()
         video = Video.objects.get(id=data['id'])
         video.delete()
-        return Response('Video was deleted or does not exists but the request is valid')
+        return Response({'status':'Video was deleted or does not exists but the request is valid'})
     else:
-        return Response('Incomplete request')
+        return Response({'status':'Incomplete request'})

@@ -10,7 +10,7 @@ def getRoutes(request):
             'id': 'integer',
             'title': 'string',
             'description': 'string',
-            'videofile': 'string (path to video)',
+            'file': 'string (path to video)',
             'updated': 'date time',
             'created': 'date time'
         },
@@ -24,16 +24,16 @@ def getRoutes(request):
             'body': {
                 'title': 'string',
                 'description': 'string',
-                'videofile': 'string (path to video)'
+                'file': 'string (path to video)'
             },
-            'description': 'Create and returns the data created OR a string with the error message',
+            'description': 'Create and returns the data created OR a map with a filed named status container a string with the status message',
         },
         'Endpoint: /videos/delete/': {
             'Method': 'DELETE',
             'body': {
                 'id': 'integer'
             },
-            'description': 'Deletes an existing video by id in url, where id = integer (retrieved in the VIDEO_OBJECT) AND return a string representing the status of the action',
+            'description': 'Deletes an existing video by id in url, where id = integer (retrieved in the VIDEO_OBJECT) AND a map with a filed named status container a string with the status message',
         },
     },
     {
@@ -58,12 +58,12 @@ def getRoutes(request):
                 'title': 'string (title of video)',
                 'videofile': 'string (path to video)'
                 },
-            'description': 'Creates and returns a new video with data sent in Post request OR a string with the error message',
+            'description': 'Creates and returns a new video with data sent in Post request OR a map with a filed named status container a string with the status message',
         },
         'Endpoint: /videos/delete/': {
             'Method': 'DELETE',
             'body': None,
-            'description': 'Deletes an existing video by id in url, where id = integer (retrieved in the VIDEO_OBJECT) AND returns a string with the status message of the request',
+            'description': 'Deletes an existing video by id in url, where id = integer (retrieved in the VIDEO_OBJECT) AND a map with a filed named status container a string with the status message',
         },
     },
 ]

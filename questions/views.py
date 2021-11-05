@@ -13,7 +13,7 @@ def getQuestions(request):
         serializer = QuestionSerializer(questions, many=True)
         return Response(serializer.data)
     else: 
-        return Response("No comments attached to this video id")
+        return Response({'status': 'No comments attached to this video id'})
 
 @api_view(['POST'])
 def createQuestion(request):
@@ -23,7 +23,7 @@ def createQuestion(request):
         serializer = QuestionSerializer(question, many=False)
         return Response(serializer.data)
     else:
-        return Response("One of the fields is missing or corrupted")
+        return Response({'status': 'One of the fields is missing or corrupted'})
 
 @api_view(['DELETE'])
 def deleteQuestion(request):
@@ -31,6 +31,6 @@ def deleteQuestion(request):
     if data['id']:
         question = Question.objects.get(id=data['id'])
         question.delete()
-        return Response('Question was deleted or does not exists but the request is valid')
+        return Response({'status': 'Question was deleted or does not exists but the request is valid'})
     else:
-        return Response('Question id is unvalid or corrupted')
+        return Response({'status': 'Question id is unvalid or corrupted'})
