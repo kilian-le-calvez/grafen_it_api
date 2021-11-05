@@ -5,6 +5,6 @@ from . import views
 urlpatterns = [
     path('', views.getRoutes),
     path('admin/', admin.site.urls),
-    path('', include('videos.urls'),
-            include('questions.urls')),
+    path('videos/', include('videos.urls')),
+    path('questions/', include('questions.urls')),
 ]
