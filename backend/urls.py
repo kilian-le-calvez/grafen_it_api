@@ -15,9 +15,8 @@ urlpatterns = [
     path('videos/', views.getVideos),
     path('videos/create/', views.createVideo),
     path('videos/delete/', views.deleteVideo),
+    static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT),
     path('questions/', views.getQuestions),
     path('questions/create/', views.createQuestion),
     path('questions/delete/', views.deleteQuestion),
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
