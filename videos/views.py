@@ -28,7 +28,8 @@ def deleteVideo(request):
     data = request.data
     if (data['id']):
         questions = Question.objects.filter(video_id=data['id'])
-        questions.delete()
+        if questions != []:
+            questions.delete()
         video = Video.objects.get(id=data['id'])
         video.delete()
         return Response({'status':'Video was deleted or does not exists but the request is valid'})

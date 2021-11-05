@@ -29,7 +29,7 @@ def getRoutes(request):
             'description': 'Create and returns the data created OR a map with a filed named status container a string with the status message',
         },
         'Endpoint: /videos/delete/': {
-            'Method': 'DELETE',
+            'Method': 'POST',
             'body': {
                 'id': 'integer'
             },
@@ -61,8 +61,10 @@ def getRoutes(request):
             'description': 'Creates and returns a new video with data sent in Post request OR a map with a filed named status container a string with the status message',
         },
         'Endpoint: /videos/delete/': {
-            'Method': 'DELETE',
-            'body': None,
+            'Method': 'POST',
+            'body': {
+                'id':'integer'
+            },
             'description': 'Deletes an existing video by id in url, where id = integer (retrieved in the VIDEO_OBJECT) AND a map with a filed named status container a string with the status message',
         },
     },
