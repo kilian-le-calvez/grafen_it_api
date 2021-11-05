@@ -25,7 +25,7 @@ def createQuestion(request):
     else:
         return Response({'status': 'One of the fields is missing or corrupted'})
 
-@api_view(['DELETE'])
+@api_view(['POST'])
 def deleteQuestion(request):
     data = request.data
     if data['id']:

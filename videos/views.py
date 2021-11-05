@@ -23,7 +23,7 @@ def createVideo(request):
     else:
         return Response({'status':'One of the fields is missing or corrupted'})
 
-@api_view(['DELETE'])
+@api_view(['POST'])
 def deleteVideo(request):
     data = request.data
     if (data['id']):
