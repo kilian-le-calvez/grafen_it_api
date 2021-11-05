@@ -15,23 +15,22 @@ def getVideos(request):
 @api_view(['POST'])
 def createVideo(request):
     data = request.data
-    video = Video.objects.create(title=data['title'], videofile=data['videofile'])
-    serializer = VideoSerializer(video, many=False)
-    return Response(serializer.data)
-
-@api_view(['PUT'])
-def updateVideo(request, pk):
-    data = request.data
-    video = Video.objects.get(id=pk)
-    serializer = VideoSerializer(video, data=data)
-    if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data)
+    
+    if data['title'] and data['description'] and data['file']:
+        video = Video.objects.create(title=data['title'], description=data['description'], file=data['file'])
+        serializer = VideoSerializer(video, many=False)
+        return Response(serializer.data)
+    else:
+        return Response("One of the fields is missing or corrupted")
 
 @api_view(['DELETE'])
-def deleteVideo(request, pk):
-    questions = Question.objects.get(video_id=pk)
-    questions.delete()
-    video = Video.objects.get(id=pk)
-    video.delete()
-    return Response('Video was deleted')
+def deleteVideo(request):
+    data = request.data
+    if (data['id']):
+        questions = Question.objects.filter(video_id=data['id'])
+        questions.delete()
+        video = Video.objects.get(id=data['id'])
+        video.delete()
+        return Response('Video was deleted or does not exists but the request is valid')
+    else:
+        return Response('Incomplete request')
