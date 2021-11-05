@@ -13,7 +13,7 @@ def getQuestions(request):
         serializer = QuestionSerializer(questions, many=True)
         return Response(serializer.data)
     else: 
-        return Response({'status': 'No comments attached to this video id'})
+        return Response({})
 
 @api_view(['POST'])
 def createQuestion(request):
